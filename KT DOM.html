@@ -1,0 +1,57 @@
+<html>
+ 
+<body>
+    <table id="tbl"></table>
+    <br>
+    <button onclick="foo();">Добавить число</button>
+    
+    <script>
+        let maxNumber = 30;
+        
+        let arr = []
+        
+        for(var i = 0; i < maxNumber; i++) {
+            arr.push(Math.floor(Math.random() * 100));
+        }
+        
+        var elem = document.getElementById('tbl');
+        var tr = document.createElement("tr");
+        
+        for(var i = 0; i < maxNumber; i++) {
+            var td = document.createElement("td");
+            td.textContent = arr[i];
+            if ( arr[i] > 49 ) {
+                td.style.backgroundColor = "orange"; 
+            }
+            tr.appendChild(td);
+            if( ((i + 1) % 5) == 0 ) {
+                elem.appendChild(tr);
+                tr = document.createElement("tr");
+            }
+        }
+        
+        function foo() {
+            maxNumber = maxNumber + 1;
+            var number = Math.floor(Math.random() * 100);    
+            var elem = document.getElementById('tbl');
+            var td = document.createElement("td");
+            td.textContent = number;
+            if ( number > 49 ) {
+                td.style.backgroundColor = "orange"; 
+            }            
+            
+            var tr = elem.lastChild;
+            
+            if (tr.childElementCount < 5) {
+                tr.appendChild(td);
+            }
+            else {
+                tr = document.createElement("tr");
+                tr.appendChild(td);
+                elem.appendChild(tr);    
+            }
+        }
+    </script>    
+</body>
+    
+</html>
