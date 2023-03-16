@@ -1,0 +1,33 @@
+<html>
+ 
+<body>
+    <table id="tbl"></table>
+    
+    <script>
+        let arr = []
+        
+        for(let i = 0; i < 30; i++) {
+            arr.push(Math.floor(Math.random() * 100));
+        }
+        
+        let elem = document.getElementById('tbl');
+        let tr = document.createElement("tr");
+        
+        for(let i = 0; i < 30; i++) {
+            let td = document.createElement("td");
+            td.textContent = arr[i];
+            if ( arr[i] > 49 ) {
+                td.style.backgroundColor = "orange"; 
+            }
+            tr.appendChild(td);
+            if( ((i + 1) % 5) == 0 ) {
+                elem.appendChild(tr);
+                tr = document.createElement("tr");
+            }
+        }
+        
+        console.log(elem);
+    </script>    
+</body>
+    
+</html>
